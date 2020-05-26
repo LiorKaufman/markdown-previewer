@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
+html {
+  --black: rgb(20, 20, 20);
+  --white: hsl(0, 0%, 97%);
+  --font-size: calc(16px + 0.3vw);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+textarea {
+  font-size: var(--font-size);
+  font-family: 'Open Sans', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: darkseagreen;
+  font-size: var(--font-size);
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5em;
+  max-width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-height: 100vh;
+}
+code,
+#editor {
+  font-family: 'Source Code Pro', monospace;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  margin: 0 0.5em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.container :global(#editor),
+.container :global(#preview) {
+  background-color: var(--white);
+  color: var(--black);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.container :global(#editor) {
+  border: none;
+  padding: 0;
+}
+
+.container :global(#preview) {
+  border: none;
+}
+
+.container :global(#editor.show),
+.container :global(#preview.show) {
+  border: 1px solid hsl(0, 0%, 25%);
+  flex: 1 1;
+  padding: 1em;
+  width: auto;
+  height: auto;
+  overflow: auto;
+}
+
+@media screen and (min-width: 700px) {
+  .container {
+    flex-direction: row;
+    margin: 0;
   }
-  to {
-    transform: rotate(360deg);
+
+  .container :global(#editor),
+  .container :global(#preview) {
+    border: 1px solid hsl(0, 0%, 25%);
+    flex: 1;
+    padding: 1em;
+    width: auto;
+    height: auto;
+    margin: 0 0.5em;
   }
 }
